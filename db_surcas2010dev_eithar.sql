@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2015 at 07:21 AM
+-- Generation Time: Apr 19, 2015 at 04:35 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -34,14 +34,15 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `phone` varchar(45) DEFAULT NULL,
   `password` varchar(65) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `name`, `admin_level`, `email`, `create_date`, `phone`, `password`) VALUES
-(1, 'Ghak', 1, 'ghak@gmail.com', '2015-04-17 08:38:01', '93839229', '$2y$10$27Su31ETJrWheeuZX39eGuD3n.ogl4mXTwqFVftwIvs87H4Cme3w.');
+(1, 'Ghak', 1, 'ghak@gmail.com', '2015-04-17 08:38:01', '93839229', '$2y$10$27Su31ETJrWheeuZX39eGuD3n.ogl4mXTwqFVftwIvs87H4Cme3w.'),
+(2, 'amani', 2, 'amani_ahmed303@hotmail.com', '2015-04-19 05:52:13', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -162,15 +163,34 @@ CREATE TABLE IF NOT EXISTS `item_type` (
   `title` varchar(45) DEFAULT NULL,
   `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `admin_creator` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `item_type`
 --
 
 INSERT INTO `item_type` (`id_item_type`, `title`, `create_date`, `admin_creator`) VALUES
-(5, 'Furniture', '2015-04-17 08:40:12', 1),
-(6, 'Electrical device', '2015-04-17 08:40:12', 1);
+(1, 'الالآت الموسيقيه ', '2015-04-19 13:18:03', 2),
+(2, 'الاجهزة و العاب الفيديو ', '2015-04-19 13:18:03', 2),
+(3, 'أفلام و موسيقى', '2015-04-19 13:21:23', 2),
+(4, 'أجهزة منزلية', '2015-04-19 13:21:23', 2),
+(5, 'مستلزمات السياره', '2015-04-17 08:40:12', 1),
+(6, 'مستلزمات رياضيه', '2015-04-17 08:40:12', 1),
+(7, 'الحديقة', '2015-04-19 13:21:59', 2),
+(8, 'الاثاث و المصنوعات ', '2015-04-19 13:21:59', 2),
+(9, 'تذاكر و قسائم ', '2015-04-19 13:22:32', 2),
+(10, 'حيوانات اليفه', '2015-04-19 13:22:32', 2),
+(11, 'دراجات و قوارب', '2015-04-19 13:23:00', 2),
+(12, 'كاميرات و ادوات تصوير', '2015-04-19 13:23:00', 2),
+(13, 'كتب ', '2015-04-19 13:23:42', 2),
+(14, 'كومبيوتر و إلكترونيات', '2015-04-19 13:23:42', 2),
+(15, 'مجوهرات و ساعات', '2015-04-19 13:24:29', 2),
+(16, 'ملابس و اكسسوارات', '2015-04-19 13:24:29', 2),
+(17, 'أحذية ', '2015-04-19 13:25:01', 2),
+(18, 'حقائب', '2015-04-19 13:25:01', 2),
+(19, 'مستلزمات اطفال ', '2015-04-19 13:25:46', 2),
+(20, 'مستلزمات شخصيه', '2015-04-19 13:25:46', 2),
+(21, 'آخرى', '2015-04-19 13:26:07', 2);
 
 -- --------------------------------------------------------
 
@@ -184,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `oman_regoins` (
   `location_lng` float(10,6) NOT NULL,
   `location_lat` float(10,6) NOT NULL,
   `admin_creator` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oman_regoins`
@@ -192,7 +212,16 @@ CREATE TABLE IF NOT EXISTS `oman_regoins` (
 
 INSERT INTO `oman_regoins` (`id_oman_regoins`, `regoin_name`, `location_lng`, `location_lat`, `admin_creator`) VALUES
 (1, 'الداخلية', 21.831560, 57.162899, 1),
-(2, 'مسقط', 23.610001, 58.540001, 1);
+(2, 'مسقط', 23.610001, 58.540001, 1),
+(3, 'مسندم', 26.094809, 56.378922, 2),
+(4, 'شمال الباطنه ', 24.181135, 56.813934, 2),
+(5, 'جنوب الباطنة', 23.495426, 57.568871, 2),
+(6, 'البريمي', 24.275789, 55.821663, 2),
+(7, 'الظاهرة ', 22.646761, 56.161900, 2),
+(8, 'شمال الشرقية ', 22.045441, 58.669991, 2),
+(9, 'جنوب الشرقية ', 21.043587, 59.016571, 2),
+(10, 'الوسطى', 21.472845, 57.386471, 2),
+(11, 'ظفار', 18.323799, 54.178150, 2);
 
 -- --------------------------------------------------------
 
@@ -207,14 +236,73 @@ CREATE TABLE IF NOT EXISTS `oman_states` (
   `admin_creator` int(11) NOT NULL,
   `location_lat` float(10,6) NOT NULL,
   `location_lng` float(10,6) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oman_states`
 --
 
 INSERT INTO `oman_states` (`id_oman_states`, `state_name`, `region`, `admin_creator`, `location_lat`, `location_lng`) VALUES
-(1, 'نزوى', 1, 1, 22.933359, 57.530602);
+(1, 'نزوى', 1, 1, 22.933359, 57.530602),
+(2, 'سمائل', 1, 1, 23.297405, 57.988354),
+(3, 'إزكي', 1, 1, 22.990870, 57.878120),
+(4, 'منح', 1, 1, 22.759901, 57.593662),
+(5, 'آدم', 1, 1, 22.744986, 57.611404),
+(6, 'بهلا', 1, 1, 22.967121, 57.295387),
+(7, 'الحمراء', 1, 1, 23.100836, 57.293747),
+(8, 'بدبد', 1, 1, 23.407063, 58.123596),
+(9, 'مسقط', 2, 1, 23.600651, 58.526665),
+(10, 'بوشر', 2, 1, 23.563147, 58.419266),
+(11, 'مطرح', 2, 1, 23.612101, 58.558029),
+(12, 'قريات', 2, 1, 23.126591, 58.933624),
+(13, 'العامرات ', 2, 1, 23.585415, 58.523392),
+(14, 'السيب', 2, 1, 23.630640, 58.157845),
+(15, 'خصب', 3, 1, 26.177013, 56.245296),
+(16, 'بخاء', 3, 1, 26.140022, 56.151348),
+(17, 'دباء', 3, 1, 25.711737, 56.349529),
+(18, 'مدحاء', 3, 1, 25.288725, 56.335423),
+(19, 'السويق', 4, 1, 23.831270, 87.438736),
+(20, 'صحار', 4, 1, 24.339907, 56.712204),
+(21, 'شناص', 4, 1, 24.733175, 56.461308),
+(22, 'لوى', 4, 1, 24.507675, 56.594856),
+(23, 'صحم', 4, 1, 24.163609, 56.870598),
+(24, 'الخابورة', 4, 1, 23.961327, 57.982250),
+(25, 'الرستاق', 5, 1, 23.440414, 57.431446),
+(26, 'المصنعة', 5, 1, 23.752945, 57.629314),
+(27, 'العوابي', 5, 1, 23.311508, 57.534946),
+(28, 'نخل', 5, 1, 23.397303, 57.827148),
+(29, 'وادي المعاول', 5, 1, 23.403807, 57.819843),
+(30, 'بركاء', 5, 1, 23.690594, 57.887424),
+(31, 'البريمي', 6, 1, 24.274790, 55.821667),
+(32, 'السنينة', 6, 1, 24.297382, 55.888268),
+(33, 'محضة', 6, 1, 24.403873, 55.969585),
+(34, 'عبري', 7, 1, 23.216175, 56.475048),
+(35, 'ضنك', 7, 1, 23.216175, 56.475048),
+(36, 'ينقل', 7, 1, 23.592611, 56.555820),
+(37, 'المضيبي', 8, 1, 22.573101, 58.121101),
+(38, 'ابراء', 8, 1, 23.613878, 58.467438),
+(39, 'القابل', 8, 1, 22.570446, 58.686653),
+(40, 'بدية', 8, 1, 22.443623, 58.800793),
+(41, 'وادي بني خالد', 8, 1, 22.587145, 59.098591),
+(42, 'دماءو الطايين', 8, 1, 23.038309, 58.515717),
+(43, 'صور', 9, 1, 22.560682, 59.516205),
+(44, 'الكامل والوافي', 9, 1, 22.210917, 59.208839),
+(45, 'جعلان بني بو علي', 9, 1, 22.009239, 59.341366),
+(46, 'جعلان بني بو حسن', 9, 1, 22.078197, 59.278835),
+(47, 'مصيرة', 9, 1, 20.429152, 58.792534),
+(48, 'الدقم', 10, 1, 19.643534, 57.674110),
+(49, 'هيماء', 10, 1, 19.960316, 56.283665),
+(50, 'محوت', 10, 1, 0.000000, 0.000000),
+(51, 'الجازر', 10, 1, 0.000000, 0.000000),
+(52, 'صلالة', 11, 1, 17.056368, 54.112427),
+(53, 'طاقة', 11, 1, 17.053614, 54.391281),
+(54, 'مرباط', 11, 1, 16.990076, 54.700523),
+(55, 'سدح', 11, 1, 17.052744, 55.068348),
+(56, 'جزر الحلانيات', 11, 1, 17.511623, 56.067635),
+(57, 'ضلكوت', 11, 1, 16.704832, 53.197304),
+(58, 'رخيوت', 11, 1, 16.748188, 53.423702),
+(59, 'ثمريت', 11, 1, 17.644159, 54.025131),
+(60, 'المزيونة', 11, 1, 17.837654, 52.658939);
 
 -- --------------------------------------------------------
 
@@ -339,7 +427,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `admin_level`
 --
@@ -369,17 +457,17 @@ MODIFY `id_item_request` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `item_type`
 --
 ALTER TABLE `item_type`
-MODIFY `id_item_type` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id_item_type` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `oman_regoins`
 --
 ALTER TABLE `oman_regoins`
-MODIFY `id_oman_regoins` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_oman_regoins` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `oman_states`
 --
 ALTER TABLE `oman_states`
-MODIFY `id_oman_states` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_oman_states` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `user`
 --

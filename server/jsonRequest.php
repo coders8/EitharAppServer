@@ -12,24 +12,25 @@ if (isset($_GET["apprequestkey"])) {
 
     //request coming from app
     if ($_GET["apprequestkey"] == APP_REQUEST_KEY) {
-        
+
         require_once './DBoperations.php';
         require_once './config.php';
+        require_once '../class/cryptpass.php';
         $response = new DBoperations();
-        
-        if(isset($_GET["destination"])){
-           switch ($_GET["destination"]) {
-            case "homeitem":
-                echo json_encode( $response->getItems(10), JSON_UNESCAPED_UNICODE );
-                break;
 
-            default:
-                break;
-        } 
+        if (isset($_GET["destination"])) {
+            switch ($_GET["destination"]) {
+                case "homeitem": {
+                        echo json_encode($response->getItems(10), JSON_UNESCAPED_UNICODE);
+                    }break;
+                case "signin": {
+//                    echo json_encode($response->getItems(10), JSON_UNESCAPED_UNICODE);
+                        echo json_encode($response->SignIn($_GET["useremail"], $_GET["pass"]), JSON_UNESCAPED_UNICODE);
+                    }break;
+                default:
+                    break;
+            }
         }
-        
-        
     }
 }
-
 
