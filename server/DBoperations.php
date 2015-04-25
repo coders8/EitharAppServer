@@ -79,6 +79,50 @@ class DBoperations {
         }
     }
 
+    
+    
+    public function getAccountTypes() {
+        $types = array();
+        try {
+
+            $dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . "", DB_USERNAME, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+            $sql = "SELECT id_user_type, type_title FROM user_type WHERE 1";
+            $types = array();
+            $type = array();
+            foreach ($dbh->query($sql) as $row) {
+                $type["id"] = $row['id_user_type'];
+                $type["title"] = $row['type_title'];
+                array_push($types, $type);
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }  finally {
+            $dbh = null;
+            $arrayobj = new ArrayObject(array("usertype" => $types));
+            return $arrayobj;
+        }
+    }
+    
+    public function getOmanState() {
+          $states = array();
+        try {
+            $dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . "", DB_USERNAME, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+            $sql = "SELECT id_oman_states, state_name FROM oman_states WHERE 1";
+            $state = array();
+            foreach ($dbh->query($sql) as $row) {
+                $state["id"] = $row['id_oman_states'];
+                $state["name"] = $row['state_name'];
+                array_push($states, $state);
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }  finally {
+            $dbh = null;
+            $arrayobj = new ArrayObject(array("omanstate" => $states));
+            return $arrayobj;
+        }
+    }
+    
     public function getItems($limit) {
         $data = array();
         $itemsobject;

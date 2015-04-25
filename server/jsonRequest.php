@@ -15,7 +15,7 @@ if (isset($_GET["apprequestkey"])) {
 
         require_once './DBoperations.php';
         require_once './config.php';
-        require_once '../class/cryptpass.php';
+        
         $response = new DBoperations();
 
         if (isset($_GET["destination"])) {
@@ -24,8 +24,12 @@ if (isset($_GET["apprequestkey"])) {
                         echo json_encode($response->getItems(10), JSON_UNESCAPED_UNICODE);
                     }break;
                 case "signin": {
+                    require_once '../class/cryptpass.php';
 //                    echo json_encode($response->getItems(10), JSON_UNESCAPED_UNICODE);
                         echo json_encode($response->SignIn($_GET["useremail"], $_GET["pass"]), JSON_UNESCAPED_UNICODE);
+                    }break;
+                case "accountypes": {
+                    echo json_encode($response->getAccountTypes(), JSON_UNESCAPED_UNICODE);
                     }break;
                 default:
                     break;
@@ -33,4 +37,9 @@ if (isset($_GET["apprequestkey"])) {
         }
     }
 }
+
+//require_once './DBoperations.php';
+//require_once './config.php';
+//$response = new DBoperations();
+//echo json_encode($response->getAccountTypes(), JSON_UNESCAPED_UNICODE);
 
